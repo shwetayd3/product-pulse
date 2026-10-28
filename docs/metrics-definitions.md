@@ -19,4 +19,26 @@ Every metric in Product Pulse is defined here once and tested against a small ha
 | **MAU** | Distinct active users in the 30 days ending on a given day (rolling) |
 | **Stickiness** | DAU / MAU, averaged over the selected range |
  
+```sql
+-- DAU
+SELECT date_trunc('day', timestamp) AS day,
+       COUNT(DISTINCT user_id)      AS dau
+FROM events
+WHERE timestamp >= :start AND timestamp < :end
+GROUP BY 1
+ORDER BY 1;
+```
+ 
+**Edge cases:** users with no events are never counted. Rolling windows are inclusive of the end day.
+ 
+---
+ 
+## 2. Funnel conversion
+ 
+**Input:** an ordered list of steps (e.g. `signup → onboarding_complete → first_project → purchase`) and a conversion window (default 7 days from the first step).
+ 
+**Rules**
+1. A user enters the funnel at their first occurrence of step 1 within the date range.
+2. A user counts at step *N* only if they completed steps 1 to *N* **in order**, with step *N* occurring within the window of step 1.
+3. Repeated events do not double-count; only the earliest valid sequence is used.
 
