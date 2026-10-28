@@ -42,3 +42,21 @@ ORDER BY 1;
 2. A user counts at step *N* only if they completed steps 1 to *N* **in order**, with step *N* occurring within the window of step 1.
 3. Repeated events do not double-count; only the earliest valid sequence is used.
 
+| Output | Formula |
+|---|---|
+| Users at step N | Count of users meeting the rules above |
+| Step conversion | Users at step N / Users at step N-1 |
+| Overall conversion | Users at last step / Users at step 1 |
+| Drop-off | 1 - step conversion |
+ 
+---
+ 
+## 3. Retention (cohort)
+ 
+**Definition:** For a signup-week cohort, *Week N retention* is the share of cohort users who were active during week N after their signup week.
+ 
+```
+retention(cohort, N) = active users from cohort in week (cohort_week + N)
+                       -------------------------------------------------
+                                  total users in cohort
+```
