@@ -93,7 +93,28 @@ churn_rate(period) = users active in previous period and inactive in this period
                      --------------------------------------------------------
                               users active in previous period
 ```
+
+## 5. Segmentation
  
+Every metric above accepts these filters, applied to the **users** table before aggregation:
+ 
+| Dimension | Source column |
+|---|---|
+| Acquisition channel | `users.acquisition_channel` |
+| Plan | `users.plan` |
+| Country | `users.country` |
+ 
+When comparing segments, segment sizes are shown next to every percentage so small-sample noise is visible.
+ 
+---
+ 
+## 6. Known limitations
+ 
+- Rolling WAU/MAU double-handles users near window edges only by design (windows are inclusive).
+- Funnel results depend on the chosen conversion window; changing it changes the numbers.
+- Synthetic data has no bots, duplicate events, or clock skew. Production data would need a cleaning step.
+ 
+
 - Default period: **month** (configurable to week).
 - A user who returns later is counted as **reactivated**, not erased from past churn.
 - Retention and churn are related but not complements: retention is cohort-based, churn is period-based.
