@@ -60,3 +60,41 @@ retention(cohort, N) = active users from cohort in week (cohort_week + N)
                        -------------------------------------------------
                                   total users in cohort
 ```
+ 
+- **Week 0** is the signup week itself (typically 100% if signup counts as activity).
+- This is **N-week ("bracket") retention**: a user must be active *in* week N, not merely "on or after" it.
+- Cells for weeks that have not finished yet are shown as incomplete, never as 0%.
+```sql
+WITH cohorts AS (
+  SELECT id AS user_id, date_trunc('week', signup_date) AS cohort_week
+  FROM users
+),
+activity AS (
+  SELECT DISTINCT user_id, date_trunc('week', timestamp) AS active_week
+  FROM events
+)
+SELECT c.cohort_week,
+       (EXTRACT(EPOCH FROM (a.active_week - c.cohort_week)) / 604800)::int AS week_number,
+       COUNT(DISTINCT a.user_id) AS active_users
+FROM cohorts c
+JOIN activity a USING (user_id)
+GROUP BY 1, 2
+ORDER BY 1, 2;
+```
+ 
+---
+ 
+## 4. Churn
+ 
+**Definition (inactivity-based):** A user is **churned** in a period if they were active in the previous period but have **no activity in the current period**.
+ 
+```
+churn_rate(period) = users active in previous period and inactive in this period
+                     --------------------------------------------------------
+                              users active in previous period
+```
+ 
+- Default period: **month** (configurable to week).
+- A user who returns later is counted as **reactivated**, not erased from past churn.
+- Retention and churn are related but not complements: retention is cohort-based, churn is period-based.
+---
