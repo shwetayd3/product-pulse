@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Status** | Draft v0.1 |
-| **Author** | Shweta Yadav |
+| **Author** | Shweta |
 | **Last updated** | October 2026 |
  
 ## 1. Problem statement
