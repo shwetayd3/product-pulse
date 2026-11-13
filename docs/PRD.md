@@ -34,3 +34,18 @@ Early-stage teams need to understand how users behave (who signs up, where they 
 - A/B testing and experimentation
 - Multi-tenant SaaS, billing, or user management
 - Predictive modeling (churn prediction is a possible v2+)
+
+## 5. User stories and acceptance criteria
+ 
+**US-1: See activity over time**
+*As Maya, I want to see DAU, WAU, and MAU so I can tell whether engagement is growing.*
+- Chart shows DAU/WAU/MAU for a selectable date range
+- Stickiness (DAU/MAU) is displayed as a single headline number
+- Values match the definitions in `metrics-definitions.md`
+**US-2: Find funnel drop-off**
+*As Maya, I want to define a funnel of ordered steps so I can find where users abandon.*
+- I can choose 2 to 6 event steps in order
+- Each step shows user count and step-to-step and overall conversion
+- A conversion window (e.g. 7 days) can be set
+- Users must complete steps in order to count
+
