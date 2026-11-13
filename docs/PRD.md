@@ -20,3 +20,17 @@ Early-stage teams need to understand how users behave (who signs up, where they 
 | **Arjun, junior data analyst** | Reliable, documented metric definitions he can query and extend | Rewrites the same cohort SQL for every request |
 | **Dev, backend engineer** | A simple way to send events and verify they arrive | Does not want to adopt a heavy SaaS SDK for a small product |
  
+## 3. Goals
+ 
+1. A new user can run the project and see a populated dashboard in **under 5 minutes** (Docker Compose + seeded data).
+2. Every metric has a **written, tested definition** (see `metrics-definitions.md`).
+3. Answer the four core questions: *Are people active? Where do they drop off? Do they come back? Who leaves?*
+4. Support **segmenting** every metric by acquisition channel, plan, and country.
+5. Stay fast: dashboard queries return in **under 2 seconds on 1M events**.
+## 4. Non-goals (v1)
+ 
+- Real-time streaming analytics (batch/near-real-time is enough)
+- Session replay, heatmaps, or user-level tracking UI
+- A/B testing and experimentation
+- Multi-tenant SaaS, billing, or user management
+- Predictive modeling (churn prediction is a possible v2+)
