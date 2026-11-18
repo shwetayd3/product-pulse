@@ -42,17 +42,20 @@ Early-stage teams need to understand how users behave (who signs up, where they 
 - Chart shows DAU/WAU/MAU for a selectable date range
 - Stickiness (DAU/MAU) is displayed as a single headline number
 - Values match the definitions in `metrics-definitions.md`
+  
 **US-2: Find funnel drop-off**
 *As Maya, I want to define a funnel of ordered steps so I can find where users abandon.*
 - I can choose 2 to 6 event steps in order
 - Each step shows user count and step-to-step and overall conversion
 - A conversion window (e.g. 7 days) can be set
 - Users must complete steps in order to count
+
 **US-3: Measure retention**
 *As Maya, I want a cohort retention table so I can see if newer users stick better than older ones.*
 - Weekly cohorts by signup week, columns Week 0 to Week 12
 - Cells show % of the cohort active in that week, shaded as a heatmap
 - Cohorts with incomplete weeks are visually marked
+
 **US-4: Understand churn**
 *As Maya, I want a churn rate so I know how fast we lose users.*
 - Churn is shown per week/month with the definition visible on the page
