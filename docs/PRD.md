@@ -48,4 +48,12 @@ Early-stage teams need to understand how users behave (who signs up, where they 
 - Each step shows user count and step-to-step and overall conversion
 - A conversion window (e.g. 7 days) can be set
 - Users must complete steps in order to count
-
+**US-3: Measure retention**
+*As Maya, I want a cohort retention table so I can see if newer users stick better than older ones.*
+- Weekly cohorts by signup week, columns Week 0 to Week 12
+- Cells show % of the cohort active in that week, shaded as a heatmap
+- Cohorts with incomplete weeks are visually marked
+**US-4: Understand churn**
+*As Maya, I want a churn rate so I know how fast we lose users.*
+- Churn is shown per week/month with the definition visible on the page
+- Users can be listed for a chosen period (user IDs only)
