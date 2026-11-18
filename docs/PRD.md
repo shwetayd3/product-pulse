@@ -60,3 +60,14 @@ Early-stage teams need to understand how users behave (who signs up, where they 
 *As Maya, I want a churn rate so I know how fast we lose users.*
 - Churn is shown per week/month with the definition visible on the page
 - Users can be listed for a chosen period (user IDs only)
+
+**US-5: Compare segments**
+*As Arjun, I want to filter every metric by channel, plan, or country so I can find which users behave differently.*
+- Filters apply consistently across all dashboard views
+- Segment comparison view shows two segments side by side
+
+**US-6: Ingest events (v2)**
+*As Dev, I want to POST events to an API so I can use real data.*
+- `POST /events` accepts a single event or a batch, validated against a schema
+- Requests require an API key
+- Invalid events return clear error messages
